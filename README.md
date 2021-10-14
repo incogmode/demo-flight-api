@@ -5,7 +5,9 @@ Demo api
 
 
 ###How to run###
+
 #1.Pull or import this package to your local machine
+
 #2. run the ff:
   mvn clean install
   mvn spring-boot:run
