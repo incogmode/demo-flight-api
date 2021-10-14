@@ -5,12 +5,12 @@ Demo api
 
 
 ###How to run###
-1.Pull or import this package to your local machine
-2. run the ff:
+#1.Pull or import this package to your local machine
+#2. run the ff:
   mvn clean install
   mvn spring-boot:run
   
-3. Before runnng the end-points, build some dummy data using postman. You may use the script below:\
+#3. Before runnng the end-points, build some dummy data using postman. You may use the script below:\
 
 curl -i \
 -H "Accept: application/json" \
