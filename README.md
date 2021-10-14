@@ -12,7 +12,7 @@ Demo api
   mvn clean install
   mvn spring-boot:run
   
-#3. Before runnng the end-points, build some dummy data using postman. You may use the script below:\
+#3. Before runnng the end-points, build some dummy data using postman. You may use the script below and Import as "Raw text":\
 
 curl -i \
 -H "Accept: application/json" \
