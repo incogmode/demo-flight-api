@@ -46,15 +46,16 @@ public class FlightController {
     }
 	
 	
-	@GetMapping(path = {"/user", "/user/{data}"})
-	public void user(@PathVariable(required=false,name="data") String data,
-            @RequestParam(required=false) Map<String,String> qparams){
-
-		qparams.forEach((a,b) -> 
-	        System.out.println(String.format("%s -> %s",a,b));
-	    
-		
-		}
+//	@GetMapping(path = {"/user", "/user/{data}"})
+//	public void user(@PathVariable(required=false,name="data") String data,
+//            @RequestParam(required=false) Map<String,String> qparams){
+//
+//		qparams.forEach((a,b) -> 
+//	        System.out.println(String.format("%s -> %s",a,b));
+//	    
+//		
+//		}
+	
 //	
 //	@GetMapping("/today")
 //	public @ResponseBody List<Flight> fetchResult(@DateTimeFormat(pattern="yyyy-MM-dd") Date fromDate) {
