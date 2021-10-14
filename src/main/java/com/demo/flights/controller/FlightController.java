@@ -39,8 +39,8 @@ public class FlightController {
         return flightData.findAll();
     }
 	
-	@RequestMapping("GET/flights")
-	@GetMapping("/{id}")
+	@RequestMapping("/flights/{id}")
+	//@GetMapping("/{id}")
     public Flight getFightID(@PathVariable Long id) {
         return flightData.findById(id).orElseThrow(RuntimeException::new);
     }
