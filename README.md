@@ -18,29 +18,28 @@ curl -i \
 -H "Accept: application/json" \
 -H "Content-Type:application/json" \
 -X POST --data 
-  '{"flightNumber": "123ABC", "departurePort": "PH", "arrivalPort":"X","departureTime":"2021-10-10T09:00:23Z" ,"arrivalTime":"" }' "http://localhost:8080/POST/flights"
+  '{"flightNumber": "123ABC", "departurePort": "PH", "arrivalPort":"X","departureTime":"2021-10-10T09:00:23Z" ,"arrivalTime":"" }' "http://localhost:8080/api/POST/flights"
 
 
 4. Check and run the endpoints
 
 # URL end-points
 
-#get all flights
-http://localhost:8080/GET/flights
+get all flights
+http://localhost:8080/api/GET/flights
 
-#get flight id
-http://localhost:8080/flights/{id}
+get flight id
+http://localhost:8080/api/GET/flights/{id}
+
+get airline code
+http://localhost:8080/api/GET/flights/code/{airlineCode}
 
 
 
 
+# Existing port error solution
+Follow steps below to manually terminate existing port
 
-#Existing port error
-#Follow steps below to manually terminate existing port
+> netstat -ano | findstr {the port you use. ie 8080}
 
-> netstat -ano | findstr *<port used>*
-
-  TCP    0.0.0.0:*<port used>*  0.0.0.0:0              LISTENING       *<pid>*
-  TCP    [::]:*<port used>*     [::]:0                 LISTENING       *<pid>*
-
-> taskkill /F /PID *<pid>*
+> taskkill /F /PID {pid}
