@@ -23,7 +23,7 @@ import com.demo.flights.model.IFlightData;
 import com.demo.flights.model.Flight;
 
 @RestController
-//@RequestMapping("/flights")
+@RequestMapping("/api")
 
 public class FlightController {
 	
@@ -33,17 +33,42 @@ public class FlightController {
 		this.flightData = flightData;
 	}
 	
-	@RequestMapping("GET/flights")
-	@GetMapping
+	//ALL
+	@GetMapping("GET/flights")
     public List<Flight> getFlights() {
         return flightData.findAll();
     }
 	
-	@RequestMapping("/flights/{id}")
-	//@GetMapping("/{id}")
-    public Flight getFightID(@PathVariable Long id) {
+	@GetMapping("GET/flights/{id}")
+    public Flight getID(@PathVariable Long id) {
         return flightData.findById(id).orElseThrow(RuntimeException::new);
     }
+	
+	//airline code
+	@SuppressWarnings("rawtypes")
+	@GetMapping("GET/flights/code/{airlineCode}")
+    public List findByFlightNumber(@PathVariable String airlineCode) {
+        return flightData.findByAirlineCode(airlineCode);
+    }
+	
+	@SuppressWarnings("rawtypes")
+	@PostMapping("POST/flights")
+    public ResponseEntity createFlight(@RequestBody Flight client) throws URISyntaxException {
+		Flight savedFlight = flightData.save(client);
+        return ResponseEntity.created(new URI("/flights/" + savedFlight.getId())).body(savedFlight);
+    }
+	
+//	@RequestMapping("GET/flights")
+//	@GetMapping
+//    public List<Flight> getFlights() {
+//        return flightData.findAll();
+//    }
+//	
+//	@RequestMapping("/flights/{id}")
+//	//@GetMapping("/{id}")
+//    public Flight getFightID(@PathVariable Long id) {
+//        return flightData.findById(id).orElseThrow(RuntimeException::new);
+//    }
 	
 	
 //	@GetMapping(path = {"/user", "/user/{data}"})
@@ -72,12 +97,6 @@ public class FlightController {
 //    }
 
     
-	@SuppressWarnings("rawtypes")
-	@RequestMapping("POST/flights")
-	@PostMapping
-    public ResponseEntity createFlight(@RequestBody Flight client) throws URISyntaxException {
-		Flight savedClient = flightData.save(client);
-        return ResponseEntity.created(new URI("/flights/" + savedClient.getId())).body(savedClient);
-    }
+
 
 }

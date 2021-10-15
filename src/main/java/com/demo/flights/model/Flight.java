@@ -20,6 +20,8 @@ public class Flight {
 	private String arrivalPort;
 	private Date departureTime;
 	private Date arrivalTime;
+	private String airlineCode;
+	private String airlineDesc;
 
 	
 	public Flight() {
@@ -30,7 +32,7 @@ public class Flight {
 
 
 	public Flight(Long id, String flightNumber, String departurePort, String arrivalPort, Date departureTime,
-			Date arrivalTime) {
+			Date arrivalTime, String airlineCode, String airlineDesc) {
 		super();
 		this.id = id;
 		this.flightNumber = flightNumber;
@@ -38,6 +40,8 @@ public class Flight {
 		this.arrivalPort = arrivalPort;
 		this.departureTime = departureTime;
 		this.arrivalTime = arrivalTime;
+		this.airlineCode = airlineCode;
+		this.airlineDesc = airlineDesc;
 	}
 
 
@@ -101,6 +105,35 @@ public class Flight {
 	public void setArrivalTime(Date arrivalTime) {
 		this.arrivalTime = arrivalTime;
 	}
+
+
+
+
+	public String getAirlineCode() {
+		return airlineCode;
+	}
+
+
+
+
+	public void setAirlineCode(String airlineCode) {
+		this.airlineCode = airlineCode;
+	}
+
+
+
+
+	public String getAirlineDesc() {
+		return airlineDesc;
+	}
+
+
+
+
+	public void setAirlineDesc(String airlineDesc) {
+		this.airlineDesc = airlineDesc;
+	}
+	
 	
 	
 
