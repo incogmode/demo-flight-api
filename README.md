@@ -25,20 +25,20 @@ curl -i \
 
 # URL end-points
 
-#get all flights
+get all flights
 http://localhost:8080/api/GET/flights
 
-#get flight id
+get flight id
 http://localhost:8080/api/GET/flights/{id}
 
-#get airline code
+get airline code
 http://localhost:8080/api/GET/flights/code/{airlineCode}
 
 
 
 
 # Existing port error solution
-#Follow steps below to manually terminate existing port
+Follow steps below to manually terminate existing port
 
 > netstat -ano | findstr {the port you use. ie 8080}
 
