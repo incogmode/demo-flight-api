@@ -40,6 +40,6 @@ http://localhost:8080/api/GET/flights/code/{airlineCode}
 #Existing port error
 #Follow steps below to manually terminate existing port
 
-> netstat -ano | findstr 8080
+> netstat -ano | findstr {the port you use. ie 8080}
 
-> taskkill /F /PID <pid>
+> taskkill /F /PID {pid}
