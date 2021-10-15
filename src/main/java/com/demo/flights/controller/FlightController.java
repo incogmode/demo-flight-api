@@ -53,8 +53,8 @@ public class FlightController {
 	
 	@SuppressWarnings("rawtypes")
 	@PostMapping("POST/flights")
-    public ResponseEntity createFlight(@RequestBody Flight client) throws URISyntaxException {
-		Flight savedFlight = flightData.save(client);
+    public ResponseEntity createFlight(@RequestBody Flight fdata) throws URISyntaxException {
+		Flight savedFlight = flightData.save(fdata);
         return ResponseEntity.created(new URI("/flights/" + savedFlight.getId())).body(savedFlight);
     }
 	
