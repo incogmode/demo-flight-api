@@ -2,11 +2,14 @@ package com.demo.flights.controller;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +26,7 @@ import com.demo.flights.model.IFlightData;
 import com.demo.flights.model.Flight;
 
 @RestController
-@RequestMapping("/api")
+//@RequestMapping("/api")
 
 public class FlightController {
 	
@@ -31,6 +34,14 @@ public class FlightController {
 
 	public FlightController(IFlightData flightData) {
 		this.flightData = flightData;
+	}
+	
+	@GetMapping("/")
+	public String index() {
+		String html = "<html><a href='http://localhost:8080/GET/flights'>Get all flights.</a><br>"
+				+ "<a href='http://localhost:8080/GET/flights/code/EK'>Get by airline code.</a><br>"
+				+ "<a href='http://localhost:8080/GET/flights/airline?code=EK'>Get by airline code using param.</a><br> </html>";											
+		return html;
 	}
 	
 	//ALL
@@ -51,6 +62,13 @@ public class FlightController {
         return flightData.findByAirlineCode(airlineCode);
     }
 	
+	//airline code param
+	@SuppressWarnings("rawtypes")
+	@GetMapping("GET/flights/airline")
+    public List findByFlightCode(@RequestParam(required = false) String code) {
+        return flightData.findByAirlineCode(code);
+    }
+	
 	@SuppressWarnings("rawtypes")
 	@PostMapping("POST/flights")
     public ResponseEntity createFlight(@RequestBody Flight fdata) throws URISyntaxException {
@@ -58,43 +76,7 @@ public class FlightController {
         return ResponseEntity.created(new URI("/flights/" + savedFlight.getId())).body(savedFlight);
     }
 	
-//	@RequestMapping("GET/flights")
-//	@GetMapping
-//    public List<Flight> getFlights() {
-//        return flightData.findAll();
-//    }
-//	
-//	@RequestMapping("/flights/{id}")
-//	//@GetMapping("/{id}")
-//    public Flight getFightID(@PathVariable Long id) {
-//        return flightData.findById(id).orElseThrow(RuntimeException::new);
-//    }
-	
-	
-//	@GetMapping(path = {"/user", "/user/{data}"})
-//	public void user(@PathVariable(required=false,name="data") String data,
-//            @RequestParam(required=false) Map<String,String> qparams){
-//
-//		qparams.forEach((a,b) -> 
-//	        System.out.println(String.format("%s -> %s",a,b));
-//	    
-//		
-//		}
-	
-//	
-//	@GetMapping("/today")
-//	public @ResponseBody List<Flight> fetchResult(@DateTimeFormat(pattern="yyyy-MM-dd") Date fromDate) {
-//		return flightData.findAll();
-//    }
 
-
-//	@GetMapping("/today")
-//    public List<Flight> findAllFlightsToday(@PathVariable String date){
-//		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-//		   LocalDateTime now = LocalDateTime.now(); 
-//		   
-//        return flightData.findAllFlightsToday(dtf.format(now));
-//    }
 
     
 

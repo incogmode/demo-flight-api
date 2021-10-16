@@ -1,34 +1,34 @@
-//package com.demo.flights;
-//
-//import org.junit.Ignore;
-//import org.junit.jupiter.api.Test;
-//import org.junit.runner.RunWith;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-//import org.springframework.boot.test.context.SpringBootTest;
-//import org.springframework.test.context.TestPropertySource;
-//import org.springframework.test.web.servlet.MockMvc;
-//
-//import com.demo.flights.model.Flight;
-//
-//
-////@SpringBootTest
-//
-//@RunWith(SpringRunner.class)
-//@SpringBootTest(SpringBootTest.WebEnvironment.MOCK,classes = Application.class)
-//@AutoConfigureMockMvc
-//@TestPropertySource(
-//  locations = "classpath:application-integrationtest.properties")
-//public class FlightsApplicationTests {
-//	
-//	@Autowired
-//    private MockMvc mvc;
-//
-//    @Autowired
-//    private Flight repository;
-//
-//	@Test
-//	void contextLoads() {
-//	}
-//
-//}
+package com.demo.flights;
+
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import org.junit.jupiter.api.Test;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+@SpringBootTest
+@AutoConfigureMockMvc
+public class FlightsApplicationTests {
+	
+	@Autowired
+	private MockMvc mvc;
+
+	@Test
+	public void getDefault() throws Exception {
+		mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk());
+	}
+	@Test
+	public void getAllFlight() throws Exception {
+		mvc.perform(MockMvcRequestBuilders.get("/GET/flights").accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk());
+	}
+
+}
