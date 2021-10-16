@@ -18,7 +18,7 @@ curl -i \
 -H "Accept: application/json" \
 -H "Content-Type:application/json" \
 -X POST --data 
-  '{"id":19,"flightNumber":"12234","departurePort":"PH","arrivalPort":"X","departureTime":"2021-10-16T08:30:00.000+00:00","arrivalTime":"2021-10-16T13:30:00.000+00:00","airlineCode":"EK","airlineDesc":"Emirates"}' "http://localhost:8080/api/POST/flights"
+  '{"id":19,"flightNumber":"12234","departurePort":"PH","arrivalPort":"X","departureTime":"2021-10-16T08:30:00.000+00:00","arrivalTime":"2021-10-16T13:30:00.000+00:00","airlineCode":"EK","airlineDesc":"Emirates"}' "http://localhost:8080/POST/flights"
 
 
 4. Check and run the endpoints
